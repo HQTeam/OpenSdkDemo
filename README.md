@@ -222,34 +222,29 @@
 
 - 1.点击优e学堂登录没反应
 
-  答：查看是否配置了HQAuthorizationManage的apiKey和urlScheme
+  - 查看是否配置了HQAuthorizationManage的apiKey和urlScheme
 
 - 2.优e学堂登录没有获取到授权信息？
 
-  答：a.查看是否配置了正确的apikey
-
-          b.查看网络是否正常
+  - 查看是否配置了正确的apikey
+  - 查看网络是否正常
 
 - 3.点击优e学堂登录，进入优e学堂下载界面？
 
-  答：a.手机安装的优e学堂为低版本 
-
-          b.检查是否将优e学堂的URLScheme(ExcellentLearning)加入白名单
+  - 手机安装的优e学堂为低版本 
+  - 检查是否将优e学堂的URLScheme(ExcellentLearning)加入白名单
 
 - 4.在优e学堂中点击应用，程序崩溃或没有反应？
 
-  答：a.查看是否安装了当前点击的应用(未安装有提示)
-
-  ​        b.查看BS端申请时填写的信息是否正确
-
-          c.查看异常输出提示
+  - 查看是否安装了当前点击的应用(未安装有提示)
+  - 查看BS端申请时填写的信息是否正确
+  - 查看异常输出提示
 
 - 5.进入优e学堂授权登录后，无法返回应用
 
-  答：检查HQAuthorizationManage的urlScheme是否配置正确
+  - 检查HQAuthorizationManage的urlScheme是否配置正确
 
 - 6.请求恒谦教育云平台开发接口api时，提示签名错误。
 
-  答：a.检查参数secret Key是否传正确。 
-
-  ​        b.检查参数字典是否传正确。
+  - 检查参数secret Key是否传正确。 
+  - ​检查参数字典是否传正确。

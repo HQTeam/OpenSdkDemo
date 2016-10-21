@@ -1,3 +1,5 @@
+[](http://images.hengqian.com/www/2011Skin/Logo.png)
+
 # OpenSdkDemo
 
 ## 平台概述

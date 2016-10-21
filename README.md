@@ -195,9 +195,7 @@
 
 - `-(void)hq_isChangeAccountLogin:(BOOL)isChange;`该方法为从优e学堂中点击应用，跳转到应用中，
 
-  ```
   sdk中判断应用当前账号与优e学堂当前账号不同时，弹窗提示用户是否切换优e学堂账号登录，用户点击弹窗选择按钮后，会响应该代理方法：选择确定：isChange为YES，选择取消：isChange为NO。
-  ```
 
   ```OBJC
       /**

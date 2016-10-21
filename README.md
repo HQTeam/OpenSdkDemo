@@ -55,8 +55,7 @@
 	请依照如下步骤导入相关SDK内容到您的开发项目中：
 	注意：目前整个工程全采用中文注释，为了防止乱码滋生，请修改文本编码方式为UTF-8
 ### 1）方式一
-    引用YouXue_Library_Android工程（Library）
-    将YouXue_Library_Android工程整个目录拷贝到和你自己的工程相同的目录下
+    引用opensdklibrary工程
     在你自己的工程中，添加YouXueSDKDemo工程的引用
     build.gradle中配置：compile project(':opensdklibrary')
 ### 2）方式二

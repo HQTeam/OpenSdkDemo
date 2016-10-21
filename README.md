@@ -23,13 +23,11 @@
 
 # SDK集成说明
 
-# 1.SDK集成
+## 1.SDK集成
 
 在集成使用优e学堂第三方登录功能时，请按照如下步骤完成操作内容。
 
-## 1.1集成准备
-
-### 1.1.1准备登录账号
+### 1.1集成准备
 
 - 使用优e学堂第三方登录功能时，需要有对应的优e学堂开发者账号，如果没有请按照如下步骤完成账号的准备工作：
 
@@ -76,13 +74,11 @@
 
   ![图片 4](Resource/图片 4.png)
 
-------
-
-# 2.SDK使用说明(详情见HQOpenSDKDemo)
 
 
+## 2.SDK使用说明(详情见HQOpenSDKDemo)
 
-## 2.1 配置APPKEY和URLScheme
+### 2.1 配置APPKEY和URLScheme
 
 - 在`AppDelegate`的`-(BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions`方法中添加如下代码：
 
@@ -103,7 +99,9 @@
   }
   ```
 
-## 2.2授权登录
+
+
+### 2.2授权登录
 
 - 授权登录接口：
 
@@ -119,7 +117,7 @@
 
   ​
 
-## 2.3处理授权后返回的信息
+### 2.3处理授权后返回的信息
 
 - 在优e学堂授权登录成功返回后或从优e学堂跳转至第三方时，传递的url携带的参数都为加密数据，需在 AppDelegate的`- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options`方法中调用sdk中的处理url方法:
 
@@ -146,7 +144,7 @@
 
   ​
 
-## 2.4 清理SDK缓存数据
+### 2.4 清理SDK缓存数据
 
 - 退出账号时，需调用sdk的清理数据方法：
 
@@ -159,7 +157,7 @@
 
   ​
 
-## 2.5开发接口调用
+### 2.5开发接口调用
 
 - 调用恒谦云平台开发接口API时，需先通过sdk获取签名或get请求的完整url：
 
@@ -180,7 +178,7 @@
 
   ​
 
-## 2.6 SDK中其它方法说明
+### 2.6 SDK中其它方法说明
 
 - `-(void)hq_authorizeLoginToLaunchExcellentLearing;`该方法为调用`\- (void)authorizeLoginBegin:(NSError * __autoreleasing*)err;`进行授权登录时，应用跳转到优e学堂时响应该代理方法。
 
@@ -217,4 +215,41 @@
   -(void)hq_accountIsSameToAppAccount;
   ```
 
-  ​
+
+
+
+# 常见问题
+
+- 1.点击优e学堂登录没反应
+
+  答：查看是否配置了HQAuthorizationManage的apiKey和urlScheme
+
+- 2.优e学堂登录没有获取到授权信息？
+
+  答：a.查看是否配置了正确的apikey
+
+  ​	b.查看网络是否正常
+
+- 3.点击优e学堂登录，进入优e学堂下载界面？
+
+  答：a.手机安装的优e学堂为低版本 
+
+  ​	b.检查是否将优e学堂的URLScheme(ExcellentLearning)加入白名单
+
+- 4.在优e学堂中点击应用，程序崩溃或没有反应？
+
+  答：a.查看是否安装了当前点击的应用(未安装有提示)
+
+  ​	b.查看BS端申请时填写的信息是否正确
+
+  ​	c.查看异常输出提示
+
+- 5.进入优e学堂授权登录后，无法返回应用
+
+  答：检查HQAuthorizationManage的urlScheme是否配置正确
+
+- 6.请求恒谦教育云平台开发接口api时，提示签名错误。
+
+  答：a.检查参数secret Key是否传正确。 
+
+          b.检查参数字典是否传正确。

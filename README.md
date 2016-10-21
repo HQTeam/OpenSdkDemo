@@ -145,26 +145,26 @@
 	}));
 ###  2）开放接口中不需要token参数的，参数sign使用开放平台应用信息中的Secret Key
       	Map<String, String> secondparams = new HashMap<String, String>();
-	String secondURL = "http://api.hengqian.net/openApi/users/show.json";
-	String secondAPIKey = "FVui6P7SV**********8U5Ypktgu1g9ud";
-	mSecret = "3e185f399b0***********81b7a423d10b2";
-      	secondparams.put("consumerKey", secondAPIKey);
-	secondparams.put("uids", "47f426e***************83c83b841");
-	secondparams.put("timeTamp", Long.toString(System.currentTimeMillis() / 1000));
-	secondparams.put("field", "district");
-      	String secondrequesURL = HengQianSDK.getInstance().joinRequestUrl(secondURL, secondparams,mSecret);
-      	OkHttpUtil.getInstance().execute(RequestBuilder.create()
-                .setRequestMethod(RequestBuilder.Method.GET)
-		.setUrl(secondrequesURL).setHttpCallback(new HttpCallback() {
-		@Override
-		public void onFinish(final HttpResult result) {
-			MainActivity.this.runOnUiThread(new Runnable() {
-				public void run() {
-					Log.e("data = ", result.getResult());
-				}
-			});
-		}
-	}));
+		String secondURL = "http://api.hengqian.net/openApi/users/show.json";
+		String secondAPIKey = "FVui6P7SV**********8U5Ypktgu1g9ud";
+		mSecret = "3e185f399b0***********81b7a423d10b2";
+		secondparams.put("consumerKey", secondAPIKey);
+		secondparams.put("uids", "47f426e***************83c83b841");
+		secondparams.put("timeTamp", Long.toString(System.currentTimeMillis() / 1000));
+		secondparams.put("field", "district");
+		String secondrequesURL = HengQianSDK.getInstance().joinRequestUrl(secondURL, secondparams,mSecret);
+		OkHttpUtil.getInstance().execute(RequestBuilder.create()
+			.setRequestMethod(RequestBuilder.Method.GET)
+			.setUrl(secondrequesURL).setHttpCallback(new HttpCallback() {
+			@Override
+			public void onFinish(final HttpResult result) {
+				MainActivity.this.runOnUiThread(new Runnable() {
+					public void run() {
+						Log.e("data = ", result.getResult());
+					}
+				});
+			}
+		}));
 # 常见问题
 
 #####1.SDK初始化不成功？

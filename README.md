@@ -1,5 +1,3 @@
-​								 ![恒谦教育Logo副本](Resource/恒谦教育Logo.jpg)
-
 # 
 
 ## 平台概述
@@ -14,7 +12,7 @@
   |     名词     |                    注释                    |
   | :--------: | :--------------------------------------: |
   |  App Key   |     分配给每个第三方应用的AppKey,用于鉴权身份，显示来源等功能     |
-  | IUiListener |              用来定位应用，实现应用间跳转              |
+  | IUiListener |              第三方应用授权回调监听              |
   |   token    |           授权登录成功后，返给第三方应用的用户令牌           |
   |   secret   |           授权登录成功后，返给第三方应用的用户秘钥           |
   |   账号直接授权   | 通过唤起优e学堂，获取优e学堂当前账号信息进行授权，并返回token和secret |
@@ -34,218 +32,157 @@
 
   1).  登录 [http://open.hengqian.net/ ](http://open.hengqian.net/%20) 网站，进入恒谦教育云平台主页，点击右上角注册成为开发者，可以注册自己的优e学堂开发者账号；
 
-  2).添加自己的应用，同时记录分配给该应用的客户端密钥值；后面授权登录sdk需使用该密钥。
+  2).添加自己的应用，同时记录分配给该应用的客户端密钥值(APIKEY)；后面授权登录sdk需使用该密钥。
+  注：开发者平台中的APIKEY就是移动应用使用的appkey
+ 1、应用包名
+    安装包APK的包名。如：com.hq.otherdemo
+ 2、应用安装包
+    上传的安装包需要审核
+ 3、界面全称
+    带包名全路径的启动界面全称，如：com.hq.otherdemo.OtherActivity
+ 4、版本号
+    除第一次上传版本号，其他输入版本号必须比之前上传的版本号高
+ 5、版本名
+    当前版本的名称
+ 
 
-  ![图片 1](Resource/图片 1.png)
+  3).应用添加到恒谦教育云平台后，可获取到云平台发放的API Key和Secret Key，如下图：
 
-  - 1、Bundle ID:
 
-    应用的唯一标示
-
-  - 2、URLScheme
-
-  ​       用来定位应用，实现优e学堂到应用的跳转
-
-  - 3、AppStore
-
-    应用在AppStore的下载地址
-
-  - 4、联系方式
-
-    电话或QQ
-
-  3).应用添加到恒谦教育云平台后，可获取到云平台发放的API Key和Secret
-  Key，如下图：
-
-  ![图片 2](Resource/图片 2.png)
 
 ## 1.2导入SDK开发包
 
 - 请依照如下步骤导入相关SDK内容到您的开发项目中：
-  - 解压缩 YouXue_IOS_SDK.zip 集成压缩包；
-  - 将HQOpenSDK.framework文件夹导入工程中。
+  - 导入项目HengQianDemo；
+  - 将HQopensdklibrary文件夹导入Ecplise中作为引用库使用。
+  注意：目前整个工程全采用中文注释，为了防止乱码滋生，请修改文本编码方式为UTF-8。
+  
+## 1.3配置
 
-## 1.3设置URLScheme
-
-- 设置自己应用的URL Schemes
-
-  ![图片 3](Resource/图片 3.png)
-
-- 将优e学堂的URL Scheme加入白名单
-
-  ![图片 4](Resource/图片 4.png)
-
-
-
-## 2.SDK使用说明(详情见HQOpenSDKDemo)
-
-### 2.1 配置APPKEY和URLScheme
-
-- 在`AppDelegate`的`-(BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions`方法中添加如下代码：
-
-  ```OBJC
-  - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-      // Override point for customization after application launch.
-      
-      ............
-      
-      //初始化HQAuthorizationManage单例
-      HQAuthorizationManage *manage = [HQAuthorizationManage shareHQAuthorization];
-      //接入恒谦云平台时，获取的API Key
-      manage.apiKey = @"fwOfy4g4GB60slS4Dh8ntE5BnhSSxgFa";
-      //当前应用的urlScheme  注意：需将优e学堂的urlScheme = ExcellentLearning 加入白名单
-      manage.urlScheme = @"HQOpenSDKDemo";
-      
-      return YES;
-  }
-  ```
-
-
-
-### 2.2授权登录
-
-- 授权登录接口：
-
-  ```OBJC
-  /**
-  *  开始授权登录方式检测
-  *
-  *  @param urlScheme 你app的URL Scheme
-  *  err 授权检测错误原因
-  */
-  -(void)authorizeLoginBegin:(NSError * __autoreleasing*)err;
-  ```
-
-  ​
-
-### 2.3处理授权后返回的信息
-
-- 在优e学堂授权登录成功返回后或从优e学堂跳转至第三方时，传递的url携带的参数都为加密数据，需在 AppDelegate的`- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options`方法中调用sdk中的处理url方法:
-
-  ```OBJC
-  /**
-  *  处理优e学堂传递的url加密数据
-  *  @param url 优e学堂跳转回来的url
-  */
-  -(void)handleApplicationUrlWithExcellentLearning:(NSURL *)url;
-  ```
-
-  ​
-
-- 通过实现SDK代理接收解析后的accessToken和accessSecret:
-
-  ```OBJC
-      /**
-  *  解析后的accessToken和accessSecre
-  *  @param accessToken
-  *  @param accessSecret
-  */
-  -(void)handleApplicationUrlWithExcellentLearning:(NSURL *)url;
-  ```
-
-  ​
-
-### 2.4 清理SDK缓存数据
-
-- 退出账号时，需调用sdk的清理数据方法：
-
-  ```OBJC
-  /**
-  *  退出账号时，清理sdk相关信息
-  */
-  -(void)resetExcellentLearningSDKCacheProfile;
-  ```
-
-  ​
-
-### 2.5开发接口调用
-
-- 调用恒谦云平台开发接口API时，需先通过sdk获取签名或get请求的完整url：
-
-  ```OBJC
-  /**
-  *  获取签名sign 或 get请求完整的url地址
-  *  @param urlStr 请求的url
-  *  @param parmaDid 请求用到的参数 （参数除sign外都需要传，可以传空）
-  *  @param secretKey 若该接口请求参数中有token，secretKey为授权登录返回的secret
-                      否则secretKey为在恒谦云平台创建应用时，获取的Secret Key
-  *  @param completeUrl YES:返回get请求完整的url NO:返回签名sign
-  */
-  -(NSString *)getHQAuthSignWithURL:(NSString *)urlStr
-    					    withParma:(NSDictionary *)parmaDic 
-                      withSecretKey:(NSString *)secretKey  
-                        completeUrl:(BOOL)completeUrl;
-  ```
-
-  ​
-
-### 2.6 SDK中其它方法说明
-
-- `-(void)hq_authorizeLoginToLaunchExcellentLearing;`该方法为调用`\- (void)authorizeLoginBegin:(NSError * __autoreleasing*)err;`进行授权登录时，应用跳转到优e学堂时响应该代理方法。
-
-  ```OBJC
-  /**
-  *  授权登录检测成功后，将要跳转到优e学堂
-  */
-  -(void)hq_authorizeLoginToLaunchExcellentLearing;
-  ```
-
-  ​
-
-- `-(void)hq_isChangeAccountLogin:(BOOL)isChange;`该方法为从优e学堂中点击应用，跳转到应用中，
-
-  sdk中判断应用当前账号与优e学堂当前账号不同时，弹窗提示用户是否切换优e学堂账号登录，用户点击弹窗选择按钮后，会响应该代理方法：选择确定：isChange为YES，选择取消：isChange为NO。
-
-  ```OBJC
-      /**
-  *  从优e学堂跳转应用，优e学堂账号与应用账号不一致时
-  *  isChange : 是否选择切换账号   YES:是  NO:否
-  */
-  -(void)hq_isChangeAccountLogin:(BOOL)isChange;
-  ```
-
-  ​
-
-
-- `-(void)hq_accountIsSameToAppAccount;` 该方法为从优e学堂中点击应用，跳转到应用中，sdk中判断应用当前账号与优e学堂当前账号相同时，响应该代理。
-
-  ```OBJC
-  /**
-  *  从优e学堂跳转应用，并且优e学堂的登录账号与当前应用账号相同
-  */
-  -(void)hq_accountIsSameToAppAccount;
-  ```
-
-
-
-
+    权限配置
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    配置APPKEY
+    <meta-data
+        android:name="HQ_OPEN_KEY"
+        android:value="BS端申请的API KEY">
+    </meta-data>
+    注册Application
+    <application
+            android:name="包名.MyApplication"（自定义Application的名字）
+    </application>
+    配置代码混淆,添加如下配置
+    -dontwarn okio.**
+      -keep class okio.**{*;}
+      -dontwarn com.squareup.**
+      -keep class com.squareup.**{*; }
+      -dontwarn com.socks.**
+      -keep class com.socks.**{*; }
+      -dontwarn com.hqjy.**
+      -keep class com.hqjy.**{*;} 
+## 1.4初始化SDK
+    自定义Application
+    在onCreate中，初始化SDK，方法如下：
+    //初始化SDK
+    HengQianSDK.getInstance().initSDK(this);
+## 1.5设置登录授权
+    在登录授权界面通过调用HQAuth类的login()方法发起登录：
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
+       mHQAuth = HengQianSDK.getInstance().createAuth(this);
+    }
+    mHQAuth.login();   
+## 1.6处理授权返回值
+    @Override
+      protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+                mHQAuth.onActivityResultData(requestCode, resultCode, data, new IUiListener() {
+                @Override
+                public void onComplete(String result) { 
+        //授权成功信息返回值处理  
+        }
+                @Override
+                public void onError(String errorCode) { 
+        //授权失败信息返回处理	
+        }
+      });
+      }
+## 1.7数据清理：
+    在退出登录界面调用logout()方法
+      @Override
+      protected void onDestroy() {
+        super.onDestroy();
+        mHQAuth.logout();
+      }
+## 1.8开发接口调用：
+  -设置测试人员
+    在开放平台应用中，添加授权的测试人员。
+  -授权登录成功后调用开放接口获取数据，举例如下两种方法：
+  1）获取开放接口数据可以使用以下方法，也可自行编写方法
+    注意：开放接口中需要token参数的，使用移动端授权登录返回的token，参数sign使用移动端授权登录返回的appkey
+      Map<String, String> params = new HashMap<String, String>();
+			String URL = "http://api.hengqian.net/openApi/users/me.json";
+			String APIKey = "FVui6P7SV*********4TAU5Ypktgu1g9ud";
+      params.put("consumerKey", APIKey);
+			params.put("token", mToken);
+			params.put("timeTamp", Long.toString(System.currentTimeMillis() / 1000));
+			params.put("field", "district");
+      String requesURL = HengQianSDK.getInstance().joinRequestUrl(URL, params, mSecret);
+      OkHttpUtil.getInstance().execute(RequestBuilder.create()
+                  .setRequestMethod(RequestBuilder.Method.GET)
+										.setUrl(requesURL).setHttpCallback(new HttpCallback() {
+											@Override
+											public void onFinish(final HttpResult result) {
+												MainActivity.this.runOnUiThread(new Runnable() {
+													public void run() {
+														Log.e("info", "info = " + result.getResult());
+													}
+												});
+											}
+										}));
+  2）开放接口中不需要token参数的，参数sign使用开放平台应用信息中的Secret Key
+      Map<String, String> secondparams = new HashMap<String, String>();
+			String secondURL = "http://api.hengqian.net/openApi/users/show.json";
+			String secondAPIKey = "FVui6P7SV**********8U5Ypktgu1g9ud";
+			mSecret = "3e185f399b0***********81b7a423d10b2";
+      secondparams.put("consumerKey", secondAPIKey);
+			secondparams.put("uids", "47f426e***************83c83b841");
+			secondparams.put("timeTamp", Long.toString(System.currentTimeMillis() / 1000));
+			secondparams.put("field", "district");
+      String secondrequesURL = HengQianSDK.getInstance().joinRequestUrl(secondURL, secondparams,mSecret);
+      OkHttpUtil.getInstance().execute(RequestBuilder.create()
+                  .setRequestMethod(RequestBuilder.Method.GET)
+										.setUrl(secondrequesURL).setHttpCallback(new HttpCallback() 											{
+											@Override
+											public void onFinish(final HttpResult result) {
+												MainActivity.this.runOnUiThread(new Runnable() {
+													public void run() {
+														Log.e("data = ", result.getResult());
+													}
+												});
+											}
+										}));
 # 常见问题
 
-- 1.点击优e学堂登录没反应
-
-  - 查看是否配置了HQAuthorizationManage的apiKey和urlScheme
-
-- 2.优e学堂登录没有获取到授权信息？
-
-  - 查看是否配置了正确的apikey
-  - 查看网络是否正常
-
-- 3.点击优e学堂登录，进入优e学堂下载界面？
-
-  - 手机安装的优e学堂为低版本 
-  - 检查是否将优e学堂的URLScheme(ExcellentLearning)加入白名单
-
-- 4.在优e学堂中点击应用，程序崩溃或没有反应？
-
-  - 查看是否安装了当前点击的应用(未安装有提示)
-  - 查看BS端申请时填写的信息是否正确
-  - 查看异常输出提示
-
-- 5.进入优e学堂授权登录后，无法返回应用
-
-  - 检查HQAuthorizationManage的urlScheme是否配置正确
-
-- 6.请求恒谦教育云平台开发接口api时，提示签名错误。
-
-  - 检查参数secret Key是否传正确。 
-  - ​检查参数字典是否传正确。
+1.SDK初始化不成功？
+  a.查看是否自定义了application，并在其中调用了HengQianSDK.initSDK()方法
+  b.查看是否在清单文件中配置了正确的appkey
+  c.查看是否在清单文件中注册了自定义的application
+2.优e学堂登录没有获取到授权信息？
+  a.查看是否在清单文件中配置了正确的appkey
+  b.查看网络是否正常
+3.点击优e学堂登录，进入优e学堂下载界面？
+  a.查看是否安装了优e学堂正式版本
+4.点击优e学堂登录，没有反应？
+  a.查看是否安装了优e学堂最新版本，低版本不兼容第三方登录
+  b.查看是否在清单文件中配置了正确的appkey
+5.点击优e学堂登录，进入优e学堂手动输入授权界面？
+  a.查看优e学堂是否登录
+6.手机安装了优e学堂，点击优e学堂登录，弹出未安装对话框或者提示“当前优e学堂版本太低”？
+  a.手机安装的优e学堂不是官方版本，或者为低版本。更新升级优e学堂最新版本。
+7.集成优e学堂SDK后，点击“优e学堂登录”，提示“API Key不正确，请配制正确的API Key！”
+  a.查看应用包名和在BS端申请时填写的包名是否相同，不同请更改。

@@ -1,6 +1,6 @@
-[](http://images.hengqian.com/www/2011Skin/Logo.png)
+​								 ![恒谦教育Logo副本](Resource/恒谦教育Logo副本.jpg)
 
-# OpenSdkDemo
+# 
 
 ## 平台概述
 

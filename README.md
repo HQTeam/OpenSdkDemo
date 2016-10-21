@@ -1,4 +1,4 @@
-​								 ![恒谦教育Logo副本](Resource/恒谦教育Logo副本.jpg)
+​								 ![恒谦教育Logo副本](Resource/恒谦教育Logo.jpg)
 
 # 
 

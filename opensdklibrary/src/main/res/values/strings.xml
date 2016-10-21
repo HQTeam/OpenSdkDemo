@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">opensdk</string>
+    <string name="hq_open_sdk_changeuser_dialog_reminder">当前登录用户不是优e学堂用户，是否切换为优e学堂用户？</string>
+    <string name="hq_open_sdk_changeuser_dialog_cancel_reminder">当前登录用户不是优e学堂用户</string>
+    <string name="hq_open_sdk_changeuser_appid_overdue">appid已过期或不能使用，请尽快联系管理人员!</string>
+    <string name="hq_open_sdk_changeuser_network_off">无法连接网络，SDK初始化失败，请检查您的数据网络连接。</string>
+    <string name="hq_open_sdk_changeuser_not_init">HengQianSDK没有初始化，不能进行优e学堂登录。请在自定义的application中调用HengQianSDK.initSDK()方法。</string>
+    <string name="hq_open_sdk_changeuser_appkey_not_configuration">HQ_OPEN_KEY未配置,请先配置HQ_OPEN_KEY。</string>
+    <string name="hq_open_sdk_changeuser_system_error">系统繁忙，请稍后再次尝试。</string>
+    <string name="hq_open_sdk_changeuser_no_setup_dialog_title">未安装优e学堂，请先下载安装！</string>
+    <string name="hq_open_sdk_changeuser_no_setup_hint">请先下载安装优e学堂！</string>
+    <string name="hq_open_sdk_changeuser_notification_title">正在下载</string>
+    <string name="hq_open_sdk_changeuser_notification_hint">优e学堂最新版本下载</string>
+    <string name="hq_open_sdk_changeuser_youxue_low_version">当前优e学堂版本太低，请下载安装最新版本！</string>
+    <string name="hq_open_sdk_permissions_dialog_cancle">取消</string>
+    <string name="hq_open_sdk_common_permissions_dialog_confim">确认</string>
+    <string name="hq_open_sdk_common_permissions_unregistered_error">没有在AndroidManifest.xml中检测到com.hqjy.opensdk.ChangeUserDialogActivity,请查看官网文档进行添加.</string>
+
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hqjy.opensdk" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+
+        <!-- 优e学堂SDK中activity的注册-->
+        <activity android:name="com.hqjy.opensdk.ChangeUserDialogActivity"></activity>
+        <!-- 优e学堂SDK中注册一个广播接收者（版本更新） -->
+        <receiver android:name="com.hqjy.opensdk.HQAuth$DownLoadBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+            </intent-filter>
+        </receiver>
+        <!-- 优e学堂SDK中注册一个广播接收者（账号切换）-->
+        <receiver android:name="com.hqjy.opensdk.ChangeUserBroadcastReceiver">
+            <intent-filter >
+                <action android:name="com.hqjy.opensdk.changeuser.receiver.action"/>
+            </intent-filter>
+        </receiver>
+
+
+    </application>
+
+</manifest>

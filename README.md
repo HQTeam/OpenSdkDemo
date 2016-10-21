@@ -6,5 +6,5 @@
   - 授权登录SDK包
 - 2.HQOpenSDKDemo
   - 授权登录SDK使用Demo
-- 3.授权登录文档
+- 3.doc
   - 授权登录sdk使用说明文档

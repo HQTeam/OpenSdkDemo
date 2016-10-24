@@ -38,7 +38,7 @@
 
 ![恒谦教育Logo副本](Resource/tupian4.png)  
 
-#####   申请appkey说明：
+#####   完善应用信息说明：
 ![恒谦教育Logo副本](Resource/tupian2.png)
 
 #####     1)、应用包名

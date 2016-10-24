@@ -131,7 +131,7 @@
     
   -授权登录成功后根据开放平台开放文档调用开放接口获取数据，举例如下：
 ###  1）获取开放接口数据可以使用以下方法，也可自行编写方法
-    	注意：开放接口中需要token参数的，使用移动端授权登录返回的token，参数sign使用移动端授权登录返回的appkey
+    	注意：开放接口中需要token参数的，使用移动端授权登录返回的token，参数sign使用移动端授权登录返回的secret（如下参数mSecret）
 		Map<String, String> params = new HashMap<String, String>();
 		String URL = "http://api.hengqian.net/openApi/users/me.json";
 		String APIKey = "FVui6P7SV*********4TAU5Ypktgu1g9ud";
@@ -152,7 +152,7 @@
 				});
 			}
 		}));
-###  2）开放接口中不需要token参数的，参数sign使用开放平台应用信息中的Secret Key
+###  2）开放接口中不需要token参数的，参数sign使用开放平台应用信息中的Secret Key（如下参数mSecret）
       	Map<String, String> secondparams = new HashMap<String, String>();
 		String secondURL = "http://api.hengqian.net/openApi/users/show.json";
 		String secondAPIKey = "FVui6P7SV**********8U5Ypktgu1g9ud";

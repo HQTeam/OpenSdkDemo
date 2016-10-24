@@ -35,7 +35,9 @@
 
 ####   2.添加自己的应用，同时记录分配给该应用的客户端密钥值(APIKEY)；后面授权登录sdk需使用该密钥。
   	注：开发者平台中的APIKEY就是移动应用使用的appkey
-  
+
+![恒谦教育Logo副本](Resource/tupian4.png)  
+
 #####   申请appkey说明：
 ![恒谦教育Logo副本](Resource/tupian2.png)
 

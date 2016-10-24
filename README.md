@@ -35,7 +35,10 @@
 
 ####   2.添加自己的应用，同时记录分配给该应用的客户端密钥值(APIKEY)；后面授权登录sdk需使用该密钥。
   	注：开发者平台中的APIKEY就是移动应用使用的appkey
-  
+
+![恒谦教育Logo副本](Resource/tupian4.png)  
+
+#####   申请appkey说明：
 #####   申请appkey说明：
 ![恒谦教育Logo副本](Resource/tupian2.png)
 
@@ -131,27 +134,27 @@
     
   -授权登录成功后根据开放平台开放文档调用开放接口获取数据，举例如下：
 ###  1）获取开放接口数据可以使用以下方法，也可自行编写方法
-    	注意：开放接口中需要token参数的，使用移动端授权登录返回的token，参数sign使用移动端授权登录返回的secret（如下参数mSecret）
-		Map<String, String> params = new HashMap<String, String>();
-		String URL = "http://api.hengqian.net/openApi/users/me.json";
-		String APIKey = "FVui6P7SV*********4TAU5Ypktgu1g9ud";
-		params.put("consumerKey", APIKey);
-		params.put("token", mToken);
-		params.put("timeTamp", Long.toString(System.currentTimeMillis() / 1000));
-		params.put("field", "district");
-		String requesURL = HengQianSDK.getInstance().joinRequestUrl(URL, params, mSecret);
-		OkHttpUtil.getInstance().execute(RequestBuilder.create()
-			.setRequestMethod(RequestBuilder.Method.GET)
-			.setUrl(requesURL).setHttpCallback(new HttpCallback() {
-			@Override
-			public void onFinish(final HttpResult result) {
-				MainActivity.this.runOnUiThread(new Runnable() {
-					public void run() {
-						Log.e("info", "info = " + result.getResult());
-					}
-				});
-			}
-		}));
+		注意：开放接口中需要token参数的，使用移动端授权登录返回的token，参数sign使用移动端授权登录返回的secret（如下参数mSecret）
+			Map<String, String> params = new HashMap<String, String>();
+			String URL = "http://api.hengqian.net/openApi/users/me.json";
+			String APIKey = "FVui6P7SV*********4TAU5Ypktgu1g9ud";
+			params.put("consumerKey", APIKey);
+			params.put("token", mToken);
+			params.put("timeTamp", Long.toString(System.currentTimeMillis() / 1000));
+			params.put("field", "district");
+			String requesURL = HengQianSDK.getInstance().joinRequestUrl(URL, params, mSecret);
+			OkHttpUtil.getInstance().execute(RequestBuilder.create()
+				.setRequestMethod(RequestBuilder.Method.GET)
+				.setUrl(requesURL).setHttpCallback(new HttpCallback() {
+				@Override
+				public void onFinish(final HttpResult result) {
+					MainActivity.this.runOnUiThread(new Runnable() {
+						public void run() {
+							Log.e("info", "info = " + result.getResult());
+						}
+					});
+				}
+			}));
 ###  2）开放接口中不需要token参数的，参数sign使用开放平台应用信息中的Secret Key（如下参数mSecret）
       	Map<String, String> secondparams = new HashMap<String, String>();
 		String secondURL = "http://api.hengqian.net/openApi/users/show.json";

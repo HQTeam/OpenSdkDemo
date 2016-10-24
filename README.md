@@ -64,7 +64,11 @@
 ### 2）方式二
     复制opensdklibrary.aar文件到您的开发项目的 libs/ 目录下面；
     build.gradle中配置：compile(name:'opensdklibrary', ext:'aar')
-
+	repositories {
+	    flatDir {
+		dirs 'libs'
+	    }
+	}
 ## 1.3配置
 
     权限配置

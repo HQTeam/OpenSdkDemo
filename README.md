@@ -40,16 +40,17 @@
 ![恒谦教育Logo副本](Resource/tupian2.png)
 
 #####     1)、应用包名
-       		安装包APK的包名。如：com.hq.otherdemo
+       		安装包APK的包名。如：com.example.hengqiandemo
+			注：必填项。应用包名不能为空，切不能和平台中其他包名重复
 #####     2)、应用安装包
        		上传的安装包需要审核
+			注：测试阶段可先上传测试包，审核上线时，必须重新上传正式apk，进行审核上线
 #####     3)、界面全称
-       		带包名全路径的启动界面全称，如：com.hq.otherdemo.OtherActivity
+       		带包名全路径的启动界面全称，如：com.example.hengqiandemo.MainActivity
 #####     4)、版本号
        		除第一次上传版本号，其他输入版本号必须比之前上传的版本号高
 #####     5)、版本名
        		当前版本的名称
-####   3.应用添加到恒谦教育云平台后，可获取到云平台发放的API Key和Secret Key，如下图：
 
 ## 1.2导入SDK开发包
 	请依照如下步骤导入相关SDK内容到您的开发项目中：

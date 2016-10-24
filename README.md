@@ -1,4 +1,4 @@
-​					![恒谦教育Logo副本](Resource/tupian1.png)
+​					![恒谦教育Logo](Resource/tupian1.png)
 # 
 
 ## 平台概述
@@ -36,10 +36,10 @@
 ####   2.添加自己的应用，同时记录分配给该应用的客户端密钥值(APIKEY)；后面授权登录sdk需使用该密钥。
   	注：开发者平台中的APIKEY就是移动应用使用的appkey
 
-![恒谦教育Logo副本](Resource/tupian4.png)  
+![申请appkey](Resource/tupian4.png)  
 
 #####   完善应用信息说明：
-![恒谦教育Logo副本](Resource/tupian2.png)
+![完善应用信息](Resource/tupian2.png)
 
 #####     1)、应用包名
        		安装包APK的包名。如：com.example.hengqiandemo
@@ -146,7 +146,7 @@
   -设置测试人员
     在开放平台应用中，添加授权的测试人员。
 
-​					![恒谦教育Logo副本](Resource/tupian3.png)
+​					![添加测试人员](Resource/tupian3.png)
     
     
   -授权登录成功后根据开放平台开放文档调用开放接口获取数据，举例如下：

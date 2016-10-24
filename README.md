@@ -37,7 +37,7 @@
   	注：开发者平台中的APIKEY就是移动应用使用的appkey
   
 #####   申请appkey说明：
-![恒谦教育Logo副本](Resource/tupian2.png)
+
 
 #####     1)、应用包名
        		安装包APK的包名。如：com.hq.otherdemo

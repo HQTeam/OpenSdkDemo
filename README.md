@@ -90,16 +90,16 @@
     //初始化SDK
     HengQianSDK.getInstance().initSDK(this);
 ## 1.5设置登录授权
-    在登录授权界面通过调用HQAuth类的login()方法发起登录：
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-       super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_main);
-       //创建获取授权类对象
-       mHQAuth = HengQianSDK.getInstance().createAuth(this);
-    }
-    //调用HQAuth类的login()方法发起优e学堂登录
-    mHQAuth.login();   
+	    在登录授权界面通过调用HQAuth类的login()方法发起登录：
+	    @Override
+	    protected void onCreate(Bundle savedInstanceState) {
+	       super.onCreate(savedInstanceState);
+	       setContentView(R.layout.activity_main);
+	       //创建获取授权类对象
+	       mHQAuth = HengQianSDK.getInstance().createAuth(this);
+	    }
+	    //调用HQAuth类的login()方法发起优e学堂登录
+	    mHQAuth.login();   
 ## 1.6处理授权返回值
     @Override
       protected void onActivityResult(int requestCode, int resultCode, Intent data) {

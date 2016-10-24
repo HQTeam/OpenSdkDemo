@@ -21,7 +21,7 @@
 
   ​
 
-# SDK集成说明
+# SDK Ecplise集成说明
 
 ## 1.SDK集成
 
@@ -49,12 +49,11 @@
        		除第一次上传版本号，其他输入版本号必须比之前上传的版本号高
 #####     5)、版本名
        		当前版本的名称
-####   3.应用添加到恒谦教育云平台后，可获取到云平台发放的API Key和Secret Key，如下图：
 
 ## 1.2导入SDK开发包
 
 - 请依照如下步骤导入相关SDK内容到您的开发项目中：
-  - 导入项目HengQianDemo；
+  - Ecplise中导入项目HengQianDemo；
   - 将HQopensdklibrary文件夹导入Ecplise中作为引用库使用。
   注意：目前整个工程全采用中文注释，为了防止乱码滋生，请修改文本编码方式为UTF-8。
   
@@ -94,8 +93,10 @@
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_main);
+       //创建获取授权类对象
        mHQAuth = HengQianSDK.getInstance().createAuth(this);
     }
+    //调用HQAuth类的login()方法发起优e学堂登录
     mHQAuth.login();   
 ## 1.6处理授权返回值
     @Override
@@ -113,7 +114,7 @@
       });
       }
 ## 1.7数据清理：
-    在退出登录界面调用logout()方法
+    在登录界面销毁时调用logout()方法
       @Override
       protected void onDestroy() {
         super.onDestroy();

@@ -37,14 +37,14 @@
   	注：开发者平台中的APIKEY就是移动应用使用的appkey
   
 #####   申请appkey说明：
-
+![恒谦教育Logo副本](Resource/tupian2.png)
 
 #####     1)、应用包名
-       		安装包APK的包名。如：com.hq.otherdemo
+       		安装包APK的包名。如：com.example.hengqiandemo
 #####     2)、应用安装包
        		上传的安装包需要审核
 #####     3)、界面全称
-       		带包名全路径的启动界面全称，如：com.hq.otherdemo.OtherActivity
+       		带包名全路径的启动界面全称，如：com.example.hengqiandemo.MainActivity
 #####     4)、版本号
        		除第一次上传版本号，其他输入版本号必须比之前上传的版本号高
 #####     5)、版本名

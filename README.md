@@ -21,7 +21,7 @@
 
   ​
 
-# SDK集成说明
+# SDK Android Studio集成说明
 
 ## 1.SDK集成
 
